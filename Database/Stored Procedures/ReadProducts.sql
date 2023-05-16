@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE ReadProducts
+AS
+BEGIN
+  SELECT *
+  FROM products;
+END
