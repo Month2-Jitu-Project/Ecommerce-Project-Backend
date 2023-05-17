@@ -4,5 +4,5 @@ AS
 BEGIN
   SELECT userid, productid,quantity,price
   FROM cart
-  WHERE id = @id;
+  WHERE @id = id;
 END
