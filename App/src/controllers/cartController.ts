@@ -13,7 +13,7 @@ interface ExtendedCartRequest extends Request{
     }
 }
 
-interface ItemInCart{
+interface ItemInCart extends Request{
   id:string
   userid:string
   productid:string
@@ -26,24 +26,14 @@ interface ItemInCart{
 
   try {
     const { productid ,userid,price } = req.body;
-    // const pool  = await mssql.connect(sqlConfig)
-    // const request = new mssql.Request(pool);
 
     const id = cartid();
 
     await DatabaseHelper.exec('InsertIntoCart',{id,userid,price,productid})
 
-    // await pool.request()
-    // .input('id',mssql.VarChar,id)
-    //      .input('userid',mssql.VarChar,userid)
-    //     .input('price',mssql.VarChar,price)
-    //      .input('productid',mssql.VarChar,productid)
-    //      .execute('');
-
     // Check if the product exists in the database
     const productQuery = `SELECT * FROM products WHERE id = '${productid}'`;
     const productResult =  await DatabaseHelper.query(productQuery)
-    // await request.query(productQuery);
     const product = productResult.recordset[0];
 
     if (!product) {
@@ -53,7 +43,6 @@ interface ItemInCart{
     // Check if the product is already in the user's cart
     const cartItemQuery = `SELECT * FROM cart WHERE userid = '${userid}' AND productid = '${productid}'`;
     const cartItemResult = await DatabaseHelper.query(cartItemQuery)
-    // await request.query(cartItemQuery);
     const cartItem = cartItemResult.recordset[0];
 
     if (cartItem) {
@@ -61,12 +50,10 @@ interface ItemInCart{
       const newQuantity = cartItem.quantity + 1;
       const updateQuery = `UPDATE cart SET quantity = ${newQuantity} WHERE userid = '${userid}' AND productid = '${productid}'`;
       await DatabaseHelper.query(updateQuery)
-      // await request.query(updateQuery);
     } else {
       // If the product is not in the cart, add it with quantity 1
       const insertQuery = `INSERT INTO cart (userid, productid, quantity) VALUES ('${userid}', '${productid}', 1)`;
       await DatabaseHelper.query(insertQuery)
-      // await request.query(insertQuery);
     }
 
     return res.json({ message: 'Product added to cart.' });
@@ -81,9 +68,6 @@ interface ItemInCart{
   //get items in cart
   export const getItemsInCart = async (req:Request,res:Response) =>{
     try {
-        //destructure
-        // const{id} = req.params
-        //strong type
         let cartItems:ItemInCart[] = await (await DatabaseHelper.exec('GetItemsInCart')).recordset
       
         return res.status(200).json(cartItems)
@@ -98,12 +82,14 @@ export const GetCartById = async (req:Request<{id:string}>,res:Response) =>{
   try {
       //destructure
       const{id} = req.params
+     
       //strong type
-      let item:ItemInCart[] =  await (await DatabaseHelper.exec('GetCartById',{id})).recordset[0]
+      let item =  await (await DatabaseHelper.exec('GetCartById',{id})).recordset[0]
 
       //if cart is undefined
 
-      if(!item.length){
+      if(!item){
+        
           return res.status(404).json({message:"Cart not found"})
       }
 
@@ -134,13 +120,6 @@ export const updateCart = async (req:Request<{id:string}>,res:Response) =>{
 
       await (await DatabaseHelper.exec('UpdateCart',{userid,productid,quantity,price}))
 
-        //make a request
-        // await pool.request()
-        // .input('userid',mssql.VarChar,userid)
-        // .input('productid',mssql.VarChar,productid)
-        // .input('quantity',quantity)
-        // .input('price',mssql.VarChar,price)
-        // .execute('')
         return res.status(201).json({message:"Cart updated successfully"})
 
       
