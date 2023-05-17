@@ -1,0 +1,25 @@
+#********** TESTS *********#
+
+PUT http://localhost:8000/reset/password/stacknewbie@gmail.com
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwYWFmYWUxOS04ZDE1LTQ1NWItYTFhNi0yYWViNzc1MzRjODgiLCJlbWFpbCI6InN0YWNrbmV3YmllQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6IlRlZGR5IiwibGFzdE5hbWUiOiJPbW9uZGkiLCJpc0RlbGV0ZWQiOjAsImlzQWRtaW4iOjAsImVtYWlsc1JlY2VpdmVkIjowLCJpYXQiOjE2ODQyMzIyNDIsImV4cCI6MTY4NDU5MjI0Mn0.peILhVk_BZA2M1-379HEL69YVbP7obKi1RAvn2cwgBc
+
+{
+    "email": "stacknewbie@gmail.com",
+    "userPassword": "newpassword2023"
+}
+
+
+##### REQUEST FOR PASSWORD RESET | When a user is redirected to this page, 
+#       a new token is assigned to them       
+#
+#                **Password Reset Page**
+#
+#               Email: __________________
+#       
+#                 ********************
+#                 |   RESET BUTTON   |
+#                 ********************
+# 
+# THE FOLLOWING REQUEST WITH SEND AN EMAIL WITH A RESET LINK
+GET http://localhost:8000/reset/stacknewbie@gmail.com
