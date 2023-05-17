@@ -41,7 +41,6 @@ export const sendWelcomeEmail = async ()=>{
                 html
             }
 
-            // console.log(html)
             await sendMail(messageOptions)
 
             //update the database that the email was sent
