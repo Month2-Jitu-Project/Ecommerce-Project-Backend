@@ -1,6 +1,4 @@
 import { Request,Response} from "express";
-import mssql from 'mssql';
-import {sqlConfig} from "../config";
 import {v4 as pid} from 'uuid'
 import { DatabaseHelper } from "../DatabaseHelper";
 
@@ -22,24 +20,13 @@ interface Product{
 export const addProduct=async (req:ExtendedRequest,res:Response) =>{
     //logic to add a product to database
     try{
-
         let id = pid()
-
         const {name,price} = req.body
 
         //connect to database
-       
-
         //send request to database
-
         await DatabaseHelper.exec('InsertProduct',{id,name,price})
-        //make a request
-        // await pool.request()
-        // .input('id',mssql.VarChar,id)
-        // .input('name',mssql.VarChar,name)
-        // .input('price',mssql.VarChar,price)
-        // .execute('InsertProduct')
-
+       
         return res.status(201).json({message:"Product added successfully!!"})
 
     }catch(error:any){
@@ -51,9 +38,6 @@ export const addProduct=async (req:ExtendedRequest,res:Response) =>{
 //Get products
 export const getAllProducts = async (req:Request,res:Response) =>{
     try {
-        //destructure
-        // const{id} = req.params
-        //strong type
         let products:Product[] =  await (await DatabaseHelper.exec('ReadProducts')).recordset
         return res.status(200).json(products)
     
@@ -87,36 +71,23 @@ export const getProduct = async (req:Request<{id:string}>,res:Response) =>{
 //Update Product
 export const updateProduct = async (req:Request<{id:string}>,res:Response) =>{
     try {
-
-        // const pool  = await mssql.connect(sqlConfig)
         //destructure
         const{id} = req.params
         //strong type
         let product:Product[] = await (await DatabaseHelper.exec('GetProductById',{id})).recordset
         
-
         //if product is undefined
-
         if(!product.length){
             return res.status(404).json({message:"Product not found"})
         }
-
         const {name,price} = req.body
           //make a request
           await (await DatabaseHelper.exec('UpdateProduct',{id,name,price}))
-
-        //   await pool.request()
-        //   .input('id',mssql.VarChar,id)
-        //   .input('name',mssql.VarChar,name)
-        //   .input('price',mssql.VarChar,price)
-        //   .execute('UpdateProduct')
           return res.status(201).json({message:"Product updated successfully"})
-
         
     } catch (error:any) {
         return res.status(500).json(error.message)
     }
-
 }
 
 
@@ -124,14 +95,12 @@ export const updateProduct = async (req:Request<{id:string}>,res:Response) =>{
 export const deleteProduct = async(req:Request,res:Response) =>
 {
     try {
-        
         //destructure
         const{id} = req.params
         //strong type
         let product:Product[] = await (await DatabaseHelper.exec('GetProductById',{id})).recordset[0]
 
         //if product is undefined
-
         if(!product.length){
             return res.status(404).json({message:"Product not found"})
         }
