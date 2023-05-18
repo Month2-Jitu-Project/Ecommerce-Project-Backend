@@ -1,9 +1,9 @@
-import nodemailer from 'nodemailer'
-import dotenv, { config } from 'dotenv'
-import path from 'path'
-dotenv.config({path:path.resolve(__dirname, '../../.env')})
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({path:path.resolve(__dirname, '../../.env')});
 
-
+// MAILING SERVER CONFIGURATION
 let configOptions = {
     host:"smtp.gmail.com",
     service:"gmail",
@@ -15,14 +15,14 @@ let configOptions = {
 }
 
 function createTransporter(configOpts:any){
-    return nodemailer.createTransport(configOpts)
+    return nodemailer.createTransport(configOpts);
 }
 
 export async function sendMail(messageOptions:any){
-    let transporter = createTransporter(configOptions)
+    let transporter = createTransporter(configOptions);
 
     await transporter.sendMail(messageOptions,(err,response)=>{
-        console.log(response)
+        console.log(response);
     })
 }
 

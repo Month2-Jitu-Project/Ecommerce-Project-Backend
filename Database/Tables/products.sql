@@ -1,7 +1,0 @@
-
-CREATE TABLE products (
-  id VARCHAR(100) PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  price VARCHAR(100) NOT NULL,
-  isDeleted INT DEFAULT 0
-);

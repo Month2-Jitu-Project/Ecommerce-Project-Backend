@@ -86,14 +86,20 @@ CREATE TABLE CartItem(
 	quantity INT
 )
 
---##########################
+--######################
 --CREATE TABLE FOR Cart
---##########################
-CREATE TABLE Cart(
-	id INT IDENTITY (1, 1) PRIMARY KEY,
-	userId VARCHAR(100),
-	total INT
-)
+--######################
+CREATE TABLE cart (
+  id VARCHAR(100) PRIMARY KEY,
+  userid VARCHAR(100),
+  productid VARCHAR(100),
+  quantity VARCHAR(100),
+  price VARCHAR(100),
+  FOREIGN KEY (userid) REFERENCES Users(UserId),
+  FOREIGN KEY (productid) REFERENCES products(id),
+   isDeleted INT DEFAULT 0
+);
+
 
 /*************** END ***************/
 
