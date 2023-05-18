@@ -1,2 +1,10 @@
-# Ecommerce-Project-Backend
-new repository sam/irfan
+### Ecommerce endpoints
+
+#### Dependencies
+  MSSQL
+  NodeJs
+  Express
+  Jsonwebtoken
+  Uuid
+  Nodemailer
+  
