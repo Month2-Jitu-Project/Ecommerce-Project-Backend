@@ -10,7 +10,7 @@ dotenv.config({ path:path.resolve(__dirname, '../../.env') });
 ///////////////////////////////
 // SQL SERVER CONFIGURATION //
 ///////////////////////////////
-export const sqlServerConfig = {
+export const SQL_SERVER_CONFIG = {
     user: process.env.DB_USER as string,
     password: process.env.DB_PASSWORD as string,
     database: process.env.DB_NAME as string,
@@ -29,7 +29,7 @@ export const sqlServerConfig = {
 /////// CONNECT TO DATABASE ////////
 ///////////////////////////////////
 export const establishConnection = async () => {
-    const pool = await mssql.connect(sqlServerConfig);
+    const pool = await mssql.connect(SQL_SERVER_CONFIG);
     if (pool) {
         log('Connected to database...');
     }

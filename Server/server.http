@@ -14,26 +14,15 @@ GET http://localhost:4000/users
 POST http://localhost:4000/users
 Content-Type: application/json
 
-# {
-#     "email":"marymagdalene@gmail.com",
-#     "userPassword":"Password2023",
-#     "firstName":"Mary",
-#     "lastName":"Magdalene",
-#     "streetAddress":"Langata Rd.",
-#     "city":"Nairobi",
-#     "country":"Kenya",
-#     "phone":"011672789"
-# }
-
 {
-    "email":"petercullen@gmail.com",
-    "userPassword":"Tr4ns4mars",
-    "firstName":"Peter",
-    "lastName":"Cullen",
-    "streetAddress":"Lincolin Rd.",
-    "city":"New York",
-    "country":"USA",
-    "phone":"555-1167"
+    "email":"jonathanndambuki@gmail.com",
+    "userPassword":"M4nch3st3r4Lyf",
+    "firstName":"Jonathan",
+    "lastName":"Ndambuki",
+    "streetAddress":"Baga Toiruu",
+    "city":"Ulaanbaatar",
+    "country":"Asia",
+    "phone":"99-628616"
 }
 
 
@@ -43,11 +32,11 @@ Content-Type: application/json
 
 {
     "email":"stacknewbie@gmail.com",
-    "userPassword":"teddy428!",
-    "firstName":"Teddy",
+    "userPassword":"MoF9h{0};~!",
+    "firstName":"Nur",
     "lastName":"Omondi",
-    "streetAddress":"Kisumu - Kakamega Rd.",
-    "city":"Kakamega",
+    "streetAddress":"Karen Rd.",
+    "city":"Nairobi",
     "country":"Kenya",
     "phone":"0788783652"
 }
@@ -62,14 +51,14 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-    "email": "petercullen@gmail.com",
-    "userPassword": "Tr4ns4mars"
+    "email": "jonathanndambuki@gmail.com",
+    "userPassword": "M4nch3st3r4Lyf"
 }
 
 #************* END | USERS  ************#
-#                                       #
+                                       
 #             WHITE SPACE               #
-#                                       #
+                                       
 #***************************************#
 #********** PRODUCT REQUESTS ***********#
 #***************************************#
@@ -77,21 +66,14 @@ Content-Type: application/json
 ######### ADD PRODUCT ###########
 POST http://localhost:4000/products
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNzFjMDcyYS1hODlhLTRjZmItODBhZi1jNjZjOGY1ODk2N2QiLCJlbWFpbCI6InBldGVyY3VsbGVuQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6IlBldGVyIiwibGFzdE5hbWUiOiJDdWxsZW4iLCJpc0RlbGV0ZWQiOjAsImlzQWRtaW4iOjAsImVtYWlsc1JlY2VpdmVkIjowLCJpYXQiOjE2ODQxNDQ4NDAsImV4cCI6MTY4NDUwNDg0MH0.ysz2w7IVkyC9HV2MgbmMXD9Rx43VTOyKC4cFa9cL0Sc
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2ZDAtOTBhNi01NmMxZWRlNmYwZTkiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2lAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9uYXRoYW4iLCJsYXN0TmFtZSI6Ik5kYW1idWtpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0NDEyNDQ0LCJleHAiOjE2ODQ3NzI0NDR9.f6brAnYCV-JmS0JxW0AS6bmvxGDNzIAX7xex2M_IvtI
 
 {
-    "productName": "Samsung Galaxy",
+    "productName": "Iphone X",
     "productImage": "/product/img",
-    "productDescription": "Samsung Galaxy A24.",
-    "price": 7000
+    "productDescription": "The definition of innovation.",
+    "price": 10000
 }
-
-# {
-#     "productName": "SVS PB-4000",
-#     "productImage": "/product/img",
-#     "productDescription": "Massive, effortless bass with stunning musicality for reference performance.",
-#     "price": 4500
-# }
 
 ######### DELETE PRODUCT ##########
 DELETE http://localhost:4000/products/12222
@@ -104,7 +86,7 @@ Content-Type: application/json
     "productName": "SVS SB-4000",
     "productImage": "/product/img",
     "productDescription": "Breathtaking output below 15Hz with pinpoint accuracy for reference performance.",
-    "price": 4300
+    "price": 4500
 }
 
 

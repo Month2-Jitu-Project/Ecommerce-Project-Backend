@@ -2,7 +2,7 @@
 /////////////// IMPORTS ////////////////
 ///////////////////////////////////////
 import mssql from 'mssql';
-import { sqlServerConfig } from '../config/config';
+import { SQL_SERVER_CONFIG } from '../config/config';
 /////////////////////////////////////////
 // HELPER CLASS : DB_OPERATIONS        //
 // This class establishes a connection //
@@ -18,7 +18,7 @@ export class DB_OPERATIONS {
     // DB_FUNCTIONS USING THE private
     // KEYWORD AND ESTABLISH A CONNECTION
     // WITH THE DATABASE
-    private static pool: Promise<mssql.ConnectionPool> = mssql.connect(sqlServerConfig);
+    private static pool: Promise<mssql.ConnectionPool> = mssql.connect(SQL_SERVER_CONFIG);
     //////////////////////////////////////////
     ///// METHOD FOR APPENDING REQUESTS /////
     ////////////// TO INPUT ////////////////
@@ -59,9 +59,9 @@ export class DB_OPERATIONS {
     }
     ///////////////////////////////////////////
     ////// METHOD FOR EXECUTING QUERIES //////
-    // Take 1 parameter : queryString<string>
+    // Takes 1 parameter : queryString<string>
     /////////////////////////////////////////
     static async QUERY(queryString:string) {
-        return (await (await DB_OPERATIONS).pool).request().query(queryString)
+        return (await (await DB_OPERATIONS).pool).request().query(queryString);
     }
 }

@@ -20,11 +20,4 @@ export const sqlConfig = {
   }
 }
 
-sql.connect(sqlConfig).then(pool=>{
-  if(pool.connected){
-    console.log("I am connected to the database")
-  }
-})
-
-console.log(process.env.DB_USER)
 

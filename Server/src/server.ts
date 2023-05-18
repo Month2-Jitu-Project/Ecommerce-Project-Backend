@@ -7,6 +7,7 @@ import { log } from 'console';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes';
 import productRoutes from './routes/productRoutes';
+import cartRoutes from './routes/cartRoutes';
 // CONFIGURE DOTENV PATH
 dotenv.config({ path:path.resolve(__dirname, '../../.env') });
 /////////////////////////////////////
@@ -21,6 +22,7 @@ SERVER.use(json());
 /////// ROUTES ///////
 SERVER.use('/users', userRoutes);
 SERVER.use('/products', productRoutes);
+SERVER.use('/cart', cartRoutes);
 
 
 // LISTEN TO CONNECTIONS ON THE SPECIFIED PORT

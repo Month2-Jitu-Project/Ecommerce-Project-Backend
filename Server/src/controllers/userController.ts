@@ -21,7 +21,7 @@ export const getUserById = async (req: Request<{ userId: string }>, res: Respons
         // EXECUTE STORED PROCEDURE
         let user = await (await DB_OPERATIONS.EXECUTE('getUserById', { userId })).recordset[0];
         // CHECK IF USER ID EXISTS
-        if (!userId) {
+        if (!user) {
             return res.status(404).json({
                 message: 'User not found!'
             });
