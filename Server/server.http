@@ -66,26 +66,34 @@ Content-Type: application/json
 ######### ADD PRODUCT ###########
 POST http://localhost:4000/products
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2ZDAtOTBhNi01NmMxZWRlNmYwZTkiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2lAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9uYXRoYW4iLCJsYXN0TmFtZSI6Ik5kYW1idWtpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0NDEyNDQ0LCJleHAiOjE2ODQ3NzI0NDR9.f6brAnYCV-JmS0JxW0AS6bmvxGDNzIAX7xex2M_IvtI
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2ZDAtOTBhNi01NmMxZWRlNmYwZTkiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2lAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9uYXRoYW4iLCJsYXN0TmFtZSI6Ik5kYW1idWtpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0OTYwNTg5LCJleHAiOjE2ODUzMjA1ODl9._nizBVUJkqXqZojspt4thdNpC4YPMe0N7ex9pWsxFq0
 
 {
-    "productName": "Iphone X",
-    "productImage": "/product/img",
-    "productDescription": "The definition of innovation.",
-    "price": 10000
+    "productName": "Steam Deck", 
+    "productImage": "https://shorturl.at/dgLMU",
+    "productDescription": "Who it's for: Players looking for console-like performance and selection on the go.",
+    "price": 400
 }
+
+# {
+#     "productName": "Iphone X",
+#     "productImage": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP770/iphonex.png",
+#     "productDescription": "The definition of innovation.",
+#     "price": 10000
+# }
+
 
 ######### DELETE PRODUCT ##########
 DELETE http://localhost:4000/products/12222
 
 ######## UPDATE PRODUCT ###########
-PUT http://localhost:4000/products/687a7a79-e292-43b2-9fc0-1566aed48735
+PUT http://localhost:4000/products/b6238cac-d6ba-4070-b3ef-2ba85da2a366
 Content-Type: application/json
 
 {
-    "productName": "SVS SB-4000",
-    "productImage": "/product/img",
-    "productDescription": "Breathtaking output below 15Hz with pinpoint accuracy for reference performance.",
+    "productName": "Lenovo Yoga 7i 16", 
+    "productImage": "https://shorturl.at/cBHSY",
+    "productDescription": "The Lenovo Yoga 7i 16 is one of the biggest Windows convertibles you'll find, and while it's less flashy compared to the Yoga 9i, it's still great.",
     "price": 4500
 }
 
