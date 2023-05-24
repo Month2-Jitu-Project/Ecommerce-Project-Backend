@@ -70,7 +70,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2
 
 {
     "productName": "Steam Deck", 
-    "productImage": "https://shorturl.at/dgLMU",
+    "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MJQK3LL?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1665496505116",
     "productDescription": "Who it's for: Players looking for console-like performance and selection on the go.",
     "price": 400
 }
@@ -87,14 +87,14 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2
 DELETE http://localhost:4000/products/12222
 
 ######## UPDATE PRODUCT ###########
-PUT http://localhost:4000/products/b6238cac-d6ba-4070-b3ef-2ba85da2a366
+PUT http://localhost:4000/products/f627918a-d540-440c-bfaa-e816d4f1b42c
 Content-Type: application/json
 
-{
-    "productName": "Lenovo Yoga 7i 16", 
-    "productImage": "https://shorturl.at/cBHSY",
-    "productDescription": "The Lenovo Yoga 7i 16 is one of the biggest Windows convertibles you'll find, and while it's less flashy compared to the Yoga 9i, it's still great.",
-    "price": 4500
+{ 
+    "productName": "AirPods (3rd generation)", 
+    "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1632861342000",
+    "productDescription": "(3rd generation) with MagSafe Charging Case.",
+    "price": 179
 }
 
 
@@ -102,5 +102,5 @@ Content-Type: application/json
 GET http://localhost:4000/products
 
 ####### GET PRODUCT BY ID ########
-GET http://localhost:4000/products/6c1b6fd0-3bf0-44ce-b05c-edc20151bc35
+GET http://localhost:4000/products/90206c5b-ade3-42f0-8381-1f3a64d056b7
 #************ END | PRODUCTS  ************#

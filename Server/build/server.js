@@ -30,6 +30,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 ///////// IMPORTS //////////
 ////////////////////////////
 const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const console_1 = require("console");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -46,6 +47,9 @@ const PORT = 4000;
 ///////////////////////////
 /////// MIDDLEWARE ///////
 /////////////////////////
+SERVER.use((0, cors_1.default)({
+    origin: "*"
+}));
 SERVER.use((0, express_1.json)());
 /////// ROUTES ///////
 SERVER.use('/users', userRoutes_1.default);
