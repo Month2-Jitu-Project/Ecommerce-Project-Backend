@@ -10,6 +10,10 @@ interface ExtendedCartRequest extends Request{
         productid:string
         quantity:number
         price:string
+        image:string
+        description:string
+        tag:string
+
     }
 }
 
@@ -19,6 +23,9 @@ interface ItemInCart{
   productid:string
   quantity:number
   price:string
+  image:string
+  description:string
+  tag:string
 }
 
 //add item to cart

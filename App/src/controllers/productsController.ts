@@ -8,6 +8,9 @@ interface ExtendedRequest extends Request{
     body:{
         name:string
         price:number
+        image:string
+        description:string
+        tag:string
     }
 }
 
@@ -15,17 +18,20 @@ interface Product{
     id:string
     name:string
     price:number
+    iamge:string
+    description:string
+    tag:string
 }
 
 export const addProduct=async (req:ExtendedRequest,res:Response) =>{
     //logic to add a product to database
     try{
         let id = pid()
-        const {name,price} = req.body
+        const {name,price,image,description,tag} = req.body
 
         //connect to database
         //send request to database
-        await DatabaseHelper.exec('InsertProduct',{id,name,price})
+        await DatabaseHelper.exec('InsertProduct',{id,name,price,image,description,tag})
        
         return res.status(201).json({message:"Product added successfully!!"})
 
