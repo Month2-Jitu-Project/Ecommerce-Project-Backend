@@ -14,6 +14,7 @@ export const addProduct = async (req: Product, res: Response) => {
             productDescription,
             price
         } = req.body;
+        
         // CHECK IF token INFO EXISTS & READ TOKEN INFO i.e identify product owner from the  token used
         if (req.info) {
             // EXECUTE STORED PROCEDURE | addProduct
@@ -25,6 +26,7 @@ export const addProduct = async (req: Product, res: Response) => {
                 price
             });
         }
+        
         return res.status(201).json({
             message: 'Product added successfully!'
         });

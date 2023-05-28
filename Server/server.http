@@ -69,7 +69,7 @@ Content-Type: application/json
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2ZDAtOTBhNi01NmMxZWRlNmYwZTkiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2lAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9uYXRoYW4iLCJsYXN0TmFtZSI6Ik5kYW1idWtpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0OTYwNTg5LCJleHAiOjE2ODUzMjA1ODl9._nizBVUJkqXqZojspt4thdNpC4YPMe0N7ex9pWsxFq0
 
 {
-    "productName": "Steam Deck", 
+    "productName": "Steam Deck 2", 
     "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MJQK3LL?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1665496505116",
     "productDescription": "Who it's for: Players looking for console-like performance and selection on the go.",
     "price": 400
@@ -104,3 +104,8 @@ GET http://localhost:4000/products
 ####### GET PRODUCT BY ID ########
 GET http://localhost:4000/products/90206c5b-ade3-42f0-8381-1f3a64d056b7
 #************ END | PRODUCTS  ************#
+
+
+
+# Xbox Wireless Controller – Robot White
+# https://assets.xboxservices.com/assets/1d/e9/1de988c2-f32f-4434-a541-f9a4b353ee78.jpg?n=Accessories-Hub_Content-Placement-0_2020-Controller-White_788x444.jpg
