@@ -60,6 +60,7 @@ export const addUser = async (req: Request, res: Response) => {
             country,
             phone
         } = req.body;
+        
         //////////////////////////////////////////
         ////////////// VALIDATION ///////////////
         ////////////////////////////////////////
@@ -68,6 +69,7 @@ export const addUser = async (req: Request, res: Response) => {
         if (error) {
             return res.status(404).json(error.details[0].message);
         }
+        
         // HASH PASSWORD
         let hashedPassword = await bcrypt.hash(userPassword, 10);
         // EXECUTE STORED PROCEDURE

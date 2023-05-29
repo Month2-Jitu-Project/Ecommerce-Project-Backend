@@ -1,4 +1,7 @@
 node_modules
-dist 
+/Server/build
+/MailingAPI/build
+/PasswordResetAPI/build
+build
 **/.env
 **/app.http

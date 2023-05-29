@@ -30,11 +30,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 ///////// IMPORTS //////////
 ////////////////////////////
 const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const console_1 = require("console");
 const dotenv_1 = __importDefault(require("dotenv"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const productRoutes_1 = __importDefault(require("./routes/productRoutes"));
+const cartRoutes_1 = __importDefault(require("./routes/cartRoutes"));
 // CONFIGURE DOTENV PATH
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../../.env') });
 /////////////////////////////////////
@@ -45,10 +47,14 @@ const PORT = 4000;
 ///////////////////////////
 /////// MIDDLEWARE ///////
 /////////////////////////
+SERVER.use((0, cors_1.default)({
+    origin: "*"
+}));
 SERVER.use((0, express_1.json)());
 /////// ROUTES ///////
 SERVER.use('/users', userRoutes_1.default);
 SERVER.use('/products', productRoutes_1.default);
+SERVER.use('/cart', cartRoutes_1.default);
 // LISTEN TO CONNECTIONS ON THE SPECIFIED PORT
 SERVER.listen(PORT, () => {
     (0, console_1.log)(`Server is listening at: http://localhost:${PORT}`);

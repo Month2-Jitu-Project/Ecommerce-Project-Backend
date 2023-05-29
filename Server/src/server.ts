@@ -1,7 +1,8 @@
 /////////////////////////////
 ///////// IMPORTS //////////
 ////////////////////////////
-import express, { json } from 'express';
+import express, { json, request } from 'express';
+import cors from 'cors';
 import path from 'path';
 import { log } from 'console';
 import dotenv from 'dotenv';
@@ -18,6 +19,9 @@ const PORT = 4000;
 ///////////////////////////
 /////// MIDDLEWARE ///////
 /////////////////////////
+SERVER.use(cors({
+    origin: "*"
+}));
 SERVER.use(json());
 /////// ROUTES ///////
 SERVER.use('/users', userRoutes);

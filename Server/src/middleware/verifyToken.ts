@@ -31,4 +31,4 @@ export const VERIFY_TOKEN = (req: Info, res: Response, next: NextFunction) => {
     }
     // CALL NEXT FUNCTION IN ORDER TO LET THE REQUEST PROCEED
     next();
-}
+} 
