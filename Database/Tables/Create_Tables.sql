@@ -44,6 +44,7 @@ CREATE TABLE Products
     productName VARCHAR(255),
     productImage VARCHAR(max),
     productDescription VARCHAR(max),
+	category VARCHAR(255),
     price INT,
     isDeleted INT DEFAULT 0
 )
