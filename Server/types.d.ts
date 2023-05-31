@@ -20,6 +20,7 @@ interface Product extends Request {
         productName: string
         productImage: string
         productDescription: string
+        category: string
         price: number
     },
     params: {

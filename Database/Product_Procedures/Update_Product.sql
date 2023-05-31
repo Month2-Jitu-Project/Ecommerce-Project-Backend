@@ -9,6 +9,7 @@ CREATE OR ALTER PROCEDURE updateProduct(
     @productName VARCHAR(100),
     @productImage VARCHAR(100),
     @productDescription VARCHAR(100),
+    @category VARCHAR(255),
     @price INT
 )
 AS
@@ -18,13 +19,14 @@ BEGIN
         productName=@productName,
         productImage=@productImage,
         productDescription=@productDescription,
+        category=@category,
         price=@price
     WHERE @productId = productId AND isDeleted = 0
 END
 --########################
 --EXECUTE STORED PROCEDURE
 --########################
-EXEC updateProduct '12222', 'SVS SB16 Ultra', '/product/img', 'Sealed subwoofer', '1200'
+EXEC updateProduct '12222', 'SVS SB16 Ultra', '/product/img', 'Sealed subwoofer', 'Audio', '1200'
 
 --#####################################
 --########## VIEW UPDATED TABLE########

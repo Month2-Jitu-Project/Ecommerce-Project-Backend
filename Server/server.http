@@ -69,9 +69,10 @@ Content-Type: application/json
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2ZDAtOTBhNi01NmMxZWRlNmYwZTkiLCJlbWFpbCI6ImpvbmF0aGFubmRhbWJ1a2lAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiSm9uYXRoYW4iLCJsYXN0TmFtZSI6Ik5kYW1idWtpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0OTYwNTg5LCJleHAiOjE2ODUzMjA1ODl9._nizBVUJkqXqZojspt4thdNpC4YPMe0N7ex9pWsxFq0
 
 {
-    "productName": "Steam Deck 2", 
-    "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MJQK3LL?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1665496505116",
+    "productName": "Steam Deck", 
+    "productImage": "https://www.digitaltrends.com/wp-content/uploads/2021/07/e6wi5ghuyaahvkt.jpg?fit=720%2C720&p=1",
     "productDescription": "Who it's for: Players looking for console-like performance and selection on the go.",
+    "category": "Gaming",
     "price": 400
 }
 
@@ -87,15 +88,24 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzA2NWYwMy05NTgwLTQ2
 DELETE http://localhost:4000/products/12222
 
 ######## UPDATE PRODUCT ###########
-PUT http://localhost:4000/products/f627918a-d540-440c-bfaa-e816d4f1b42c
+PUT http://localhost:4000/products/8516b2ff-6dd4-48d0-b6f3-b94511fea530
 Content-Type: application/json
 
-{ 
-    "productName": "AirPods (3rd generation)", 
-    "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1632861342000",
-    "productDescription": "(3rd generation) with MagSafe Charging Case.",
-    "price": 179
+{
+    "productName": "Linksys Velop AX4200 WiFi 6 Mesh System", 
+    "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/HPN22?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1625777274000",
+    "productDescription": "The Linksys Velop AX4200 WiFi 6 Mesh System delivers next-level streaming and gaming to more than 40 devices on your network.",
+    "category": "Networking",
+    "price": 250
 }
+
+# { 
+#     "productName": "AirPods (3rd generation)", 
+#     "productImage": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MME73?wid=572&hei=572&fmt=jpeg&qlt=95&.v=1632861342000",
+#     "productDescription": "(3rd generation) with MagSafe Charging Case.",
+#     "category": "Mobile",
+#     "price": 179
+# }
 
 
 ######### GET ALL PRODUCTS ##########
