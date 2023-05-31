@@ -8,6 +8,7 @@ CREATE OR ALTER PROCEDURE addProduct(
     @productName VARCHAR(100),
     @productImage VARCHAR(100),
     @productDescription VARCHAR(100),
+    @category VARCHAR(255),
     @price INT
 )
 AS
@@ -18,6 +19,7 @@ BEGIN
         productName,
         productImage,
         productDescription,
+        category,
         price
         )
     VALUES(
@@ -25,14 +27,15 @@ BEGIN
         @productName,
         @productImage,
         @productDescription,
+        @category,
         @price
     )
 END
 --########################
 --EXECUTE STORED PROCEDURE
 --########################
-EXEC addProduct '12378', 'SVS PB16 Mini', '/product/img', 'Mini ported subwoofer', '1000'
-EXEC addProduct '12222', 'SVS SB16 Ultra', '/product/img', 'Sealed subwoofer', '2400'
+EXEC addProduct '12378', 'SVS PB16 Mini', '/product/img', 'Mini ported subwoofer', 'Audio', '1000'
+EXEC addProduct '12222', 'SVS SB16 Ultra', '/product/img', 'Sealed subwoofer', 'Audio', '2400'
 
 --#####################################
 --########## VIEW UPDATED TABLE########

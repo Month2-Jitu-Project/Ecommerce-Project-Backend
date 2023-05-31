@@ -12,6 +12,7 @@ export const addProduct = async (req: Product, res: Response) => {
             productName,
             productImage,
             productDescription,
+            category,
             price
         } = req.body;
         
@@ -23,6 +24,7 @@ export const addProduct = async (req: Product, res: Response) => {
                 productName,
                 productImage,
                 productDescription,
+                category,
                 price
             });
         }
@@ -78,6 +80,7 @@ export const updateProduct = async (req: Product, res: Response) => {
             productName,
             productImage,
             productDescription,
+            category,
             price
         } = req.body;
 
@@ -87,6 +90,7 @@ export const updateProduct = async (req: Product, res: Response) => {
             productName,
             productImage,
             productDescription,
+            category,
             price
         });
 

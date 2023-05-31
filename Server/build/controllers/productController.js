@@ -20,7 +20,7 @@ const addProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         // GENERATE UNIQUE ID AND ASSIGN IT TO THE product
         const productId = crypto_1.default.randomUUID();
-        const { productName, productImage, productDescription, price } = req.body;
+        const { productName, productImage, productDescription, category, price } = req.body;
         // CHECK IF token INFO EXISTS & READ TOKEN INFO i.e identify product owner from the  token used
         if (req.info) {
             // EXECUTE STORED PROCEDURE | addProduct
@@ -29,6 +29,7 @@ const addProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 productName,
                 productImage,
                 productDescription,
+                category,
                 price
             });
         }
@@ -80,13 +81,14 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             });
         }
         // EXTRACT product Details FROM REQUEST BODY
-        const { productName, productImage, productDescription, price } = req.body;
+        const { productName, productImage, productDescription, category, price } = req.body;
         // EXECUTE STORED PROCEDURE TO UPDATE PRODUCT
         yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('updateProduct', {
             productId,
             productName,
             productImage,
             productDescription,
+            category,
             price
         });
         res.status(201).json({
