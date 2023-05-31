@@ -93,11 +93,14 @@ CREATE TABLE CartItem(
 CREATE TABLE cart (
   id VARCHAR(100) PRIMARY KEY,
   userid VARCHAR(100),
-  productid VARCHAR(100),
+  productid VARCHAR(255),
   quantity VARCHAR(100),
   price VARCHAR(100),
+  image VARCHAR(100),
+  description VARCHAR(100),
+  category VARCHAR(100)
   FOREIGN KEY (userid) REFERENCES Users(UserId),
-  FOREIGN KEY (productid) REFERENCES products(id),
+  FOREIGN KEY (productid) REFERENCES Products(productId),
    isDeleted INT DEFAULT 0
 );
 
@@ -114,3 +117,7 @@ SELECT * FROM Users
 SELECT * FROM Products
 SELECT * FROM orderItem
 SELECT * FROM Orders
+SELECT * FROM Cart
+
+
+DROP TABLE cart
