@@ -31,6 +31,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 ///////////////////// 
 const resetRouter_1 = __importDefault(require("./routers/resetRouter"));
 const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../../.env') });
@@ -38,6 +39,9 @@ const PORT = process.env.PORT || 8000;
 // INITIALIZE SERVER
 const SERVER = (0, express_1.default)();
 // MIDDLEWARE
+SERVER.use((0, cors_1.default)({
+    origin: "*"
+}));
 SERVER.use((0, express_1.json)());
 // ROUTER
 SERVER.use('/reset', resetRouter_1.default);

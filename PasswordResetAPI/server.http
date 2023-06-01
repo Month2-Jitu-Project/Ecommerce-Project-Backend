@@ -2,14 +2,15 @@
 
 PUT http://localhost:8000/reset/password/stacknewbie@gmail.com
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwYWFmYWUxOS04ZDE1LTQ1NWItYTFhNi0yYWViNzc1MzRjODgiLCJlbWFpbCI6InN0YWNrbmV3YmllQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6Ik51ciIsImxhc3ROYW1lIjoiT21vbmRpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0NDE2ODQzLCJleHAiOjE2ODQ3NzY4NDN9.qIzYKA14dxaUvqprYLkj7zBafVwUAs92yNSFY-4BVI0
+# token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwYWFmYWUxOS04ZDE1LTQ1NWItYTFhNi0yYWViNzc1MzRjODgiLCJlbWFpbCI6InN0YWNrbmV3YmllQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6Ik51ciIsImxhc3ROYW1lIjoiT21vbmRpIiwiaXNEZWxldGVkIjowLCJpc0FkbWluIjowLCJlbWFpbHNSZWNlaXZlZCI6MCwiaWF0IjoxNjg0NDE2ODQzLCJleHAiOjE2ODQ3NzY4NDN9.qIzYKA14dxaUvqprYLkj7zBafVwUAs92yNSFY-4BVI0
 
 
 {
     "email": "stacknewbie@gmail.com",
-    "userPassword": "newpwd"
+    "userPassword": "newPWD2023#"
 }
 
+# newPWD2024#
 
 ##### REQUEST FOR PASSWORD RESET | When a user is redirected to this page, 
 #       a new token is assigned to them       

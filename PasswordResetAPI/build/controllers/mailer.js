@@ -37,9 +37,9 @@ const INIT_MAIL_SERVER = (USER_EMAIL) => __awaiter(void 0, void 0, void 0, funct
     // HTML CONTENT
     let htmlContent = `
         <h4>
-            Use the following passcode to reset your account | <span>9PrsfwMBJj</span>
-            <a href="http://localhost:8000/reset/password/${USER_EMAIL}">                   // APPEND TOKEN HERE
-                Reset password
+            Your password has been reset | <span>Successfully</span>
+            <a href="http://localhost:4200">                   
+                Navigate to homepage
             </a>
         </h4>
     `;
@@ -47,7 +47,7 @@ const INIT_MAIL_SERVER = (USER_EMAIL) => __awaiter(void 0, void 0, void 0, funct
     let info = yield transporter.sendMail({
         from: process.env.EMAIL,
         to: USER_EMAIL,
-        subject: 'Password Reset',
+        subject: 'Swyft | Password Reset',
         html: htmlContent
     });
     // LOG MESSAGE INFO

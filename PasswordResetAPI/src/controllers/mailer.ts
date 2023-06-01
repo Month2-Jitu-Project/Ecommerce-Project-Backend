@@ -25,9 +25,9 @@ export const INIT_MAIL_SERVER = async (USER_EMAIL: string) => {
     // HTML CONTENT
     let htmlContent = `
         <h4>
-            Use the following passcode to reset your account | <span>9PrsfwMBJj</span>
-            <a href="http://localhost:8000/reset/password/${USER_EMAIL}">                   // APPEND TOKEN HERE
-                Reset password
+            Your password has been reset | <span>Successfully</span>
+            <a href="http://localhost:4200">                   
+                Navigate to homepage
             </a>
         </h4>
     `;
@@ -36,7 +36,7 @@ export const INIT_MAIL_SERVER = async (USER_EMAIL: string) => {
     let info = await transporter.sendMail({
         from: process.env.EMAIL,
         to: USER_EMAIL,
-        subject: 'Password Reset',
+        subject: 'Swyft | Password Reset',
         html: htmlContent
     });
     // LOG MESSAGE INFO
