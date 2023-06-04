@@ -62,7 +62,7 @@ FROM Products
 --######## ORDERS #########
 CREATE TABLE Orders(
 	id INT IDENTITY(1, 1) PRIMARY KEY,
-	orderDate VARCHAR(255),
+	orderDate VARCHAR(255), --TIME STAMP
 	userId VARCHAR(255),
 	totalAmount INT
 )
@@ -74,7 +74,6 @@ CREATE TABLE orderItem(
 	id INT IDENTITY(1, 1) PRIMARY KEY,
 	orderId INT,
 	productId VARCHAR(255),
-	price INT,
 	quantity INT
 )
 
