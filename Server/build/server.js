@@ -37,6 +37,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const productRoutes_1 = __importDefault(require("./routes/productRoutes"));
 const cartRoutes_1 = __importDefault(require("./routes/cartRoutes"));
+const orderRoutes_1 = __importDefault(require("./routes/orderRoutes"));
 // CONFIGURE DOTENV PATH
 dotenv_1.default.config({ path: path_1.default.resolve(__dirname, '../../.env') });
 /////////////////////////////////////
@@ -55,6 +56,7 @@ SERVER.use((0, express_1.json)());
 SERVER.use('/users', userRoutes_1.default);
 SERVER.use('/products', productRoutes_1.default);
 SERVER.use('/cart', cartRoutes_1.default);
+SERVER.use('/orders', orderRoutes_1.default);
 // LISTEN TO CONNECTIONS ON THE SPECIFIED PORT
 SERVER.listen(PORT, () => {
     (0, console_1.log)(`Server is listening at: http://localhost:${PORT}`);
