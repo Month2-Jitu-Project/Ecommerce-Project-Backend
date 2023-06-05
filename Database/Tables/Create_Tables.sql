@@ -121,3 +121,4 @@ SELECT * FROM Cart
 
 
 DROP TABLE cart
+DROP TABLE products

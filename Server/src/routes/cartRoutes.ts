@@ -4,7 +4,7 @@
 import { Router } from "express";
 import { 
     GetCartById, 
-    addToCart, 
+    addItemToCart, 
     deleteItemFromCart, 
     getItemsInCart, 
     updateCart 
@@ -13,7 +13,7 @@ import {
 // INITIALIZE ROUTER
 const cartRoutes = Router()
 // ROUTES
-cartRoutes.post('/addToCart', addToCart);              // ADD TO CART
+cartRoutes.post('/addToCart',  addItemToCart);              // ADD TO CART
 cartRoutes.get('/getItemsInCart', getItemsInCart);     // GET CART ITEMS
 cartRoutes.get('/GetCartById/:id', GetCartById);       // GET CART BY ID
 cartRoutes.put('/update/:id', updateCart);             // UPDATE CART

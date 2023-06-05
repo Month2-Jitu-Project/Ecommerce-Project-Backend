@@ -85,7 +85,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiNzM1NGI0Yy0yMjg1LTRj
 
 
 ######### DELETE PRODUCT ##########
-DELETE http://localhost:4000/products/12222
+DELETE http://localhost:4000/products/07c74edd-9969-4d3f-bea0-c29d55251655
 
 ######## UPDATE PRODUCT ###########
 PUT http://localhost:4000/products/8516b2ff-6dd4-48d0-b6f3-b94511fea530
