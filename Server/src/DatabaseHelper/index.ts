@@ -1,10 +1,10 @@
 import mssql from "mssql"
-import { sqlConfig } from "../config"
+import { SQL_SERVER_CONFIG } from "../config/config"
 
 export class DatabaseHelper{
     //private - dont need it outside the class
     //the type is a promise
-    private static pool:Promise<mssql.ConnectionPool> = mssql.connect(sqlConfig)
+    private static pool:Promise<mssql.ConnectionPool> = mssql.connect(SQL_SERVER_CONFIG)
     ///whenever an instance s created we can create a connection pool
   
     private static addInputsToRequest(request:mssql.Request,data:{[x:string]:string | number}={}){

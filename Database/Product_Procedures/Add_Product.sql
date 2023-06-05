@@ -34,7 +34,9 @@ END
 --########################
 --EXECUTE STORED PROCEDURE
 --########################
-EXEC addProduct '12378', 'SVS PB16 Mini', '/product/img', 'Mini ported subwoofer', 'Audio', '1000'
+
+EXEC addProduct '12378', 'SVS PB16 Mini', 'https://assets.xboxservices.com/assets/1d/e9/1de988c2-f32f-4434-a541-f9a4b353ee78.jpg?n=Accessories-Hub_Content-Placement-0_2020-Controller-White_788x444.jpg', 'Mini ported subwoofer', 'Audio', '1000'
+
 EXEC addProduct '12222', 'SVS SB16 Ultra', '/product/img', 'Sealed subwoofer', 'Audio', '2400'
 
 --#####################################

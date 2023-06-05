@@ -12,55 +12,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItemFromCart = exports.updateCart = exports.GetCartById = exports.getItemsInCart = exports.addToCart = void 0;
-/////////////////////////////
-/////////// IMPORTS /////////
-/////////////////////////////
+exports.deleteItemFromCart = exports.updateCart = exports.GetCartById = exports.getItemsInCart = exports.addItemToCart = void 0;
 const uuid_1 = require("uuid");
+const mssql_1 = __importDefault(require("mssql"));
+const DatabaseHelper_1 = require("../DatabaseHelper");
 const config_1 = require("../config/config");
-const mssql_1 = __importDefault(require("mssql")); // **** CHECK THIS | Message to Samuel Ndambuki ****
-const DB_OPERATIONS_1 = require("../helpers/DB_OPERATIONS");
-// EXPORT MODULE addToCart
-const addToCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+//add item to cart
+const addItemToCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // EXTRACT INFO FROM REQUEST BODY
-        const { productid, userid, price } = req.body;
+        const { productid, userid } = req.body;
         const id = (0, uuid_1.v4)();
-        yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('InsertIntoCart', { id, userid, price, productid });
-        // Check if the product exists in the database
-        const productQuery = `SELECT * FROM products WHERE id = '${productid}'`;
-        const productResult = yield DB_OPERATIONS_1.DB_OPERATIONS.QUERY(productQuery);
-        const product = productResult.recordset[0];
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found.' });
-        }
-        // Check if the product is already in the user's cart
-        const cartItemQuery = `SELECT * FROM cart WHERE userid = '${userid}' AND productid = '${productid}'`;
-        const cartItemResult = yield DB_OPERATIONS_1.DB_OPERATIONS.QUERY(cartItemQuery);
-        const cartItem = cartItemResult.recordset[0];
-        if (cartItem) {
-            // If the product is already in the cart, increment the quantity
-            const newQuantity = cartItem.quantity + 1;
-            const updateQuery = `UPDATE cart SET quantity = ${newQuantity} WHERE userid = '${userid}' AND productid = '${productid}'`;
-            yield DB_OPERATIONS_1.DB_OPERATIONS.QUERY(updateQuery);
-        }
-        else {
-            // If the product is not in the cart, add it with quantity 1
-            const insertQuery = `INSERT INTO cart (userid, productid, quantity) VALUES ('${userid}', '${productid}', 1)`;
-            yield DB_OPERATIONS_1.DB_OPERATIONS.QUERY(insertQuery);
-        }
-        return res.json({ message: 'Product added to cart.' });
+        // Call the stored procedure to add or update the cart item
+        yield DatabaseHelper_1.DatabaseHelper.exec('AddOrUpdateCartItem', { cartid: id, userid, productid });
+        return res.json({ message: 'Item added to cart successfully.' });
     }
-    catch (err) {
-        console.error(err.message);
-        return res.status(500).json(err.message);
+    catch (error) {
+        // Handle error
+        return res.status(500).json(error.message);
     }
 });
-exports.addToCart = addToCart;
-// EXPORT MODULE getItemsInCart
+exports.addItemToCart = addItemToCart;
+//get items in cart
 const getItemsInCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let cartItems = yield (yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('GetItemsInCart')).recordset;
+        //destructure
+        // const{id} = req.params
+        //strong type
+        let cartItems = yield (yield DatabaseHelper_1.DatabaseHelper.exec('GetItemsInCart')).recordset;
         return res.status(200).json(cartItems);
     }
     catch (error) {
@@ -68,14 +46,15 @@ const getItemsInCart = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getItemsInCart = getItemsInCart;
-// EXPORT MODULE getCartById
+//Get item in cart
 const GetCartById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // EXTRACT ID FROM REQUEST PARAMS
+        //destructure
         const { id } = req.params;
-        let item = yield (yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('GetCartById', { id })).recordset[0];
-        // CHECK IF CART IS PRESENT
-        if (!item) {
+        //strong type
+        let item = yield (yield DatabaseHelper_1.DatabaseHelper.exec('GetCartById', { id })).recordset[0];
+        //if cart is undefined
+        if (!item.length) {
             return res.status(404).json({ message: "Cart not found" });
         }
         return res.status(200).json(item);
@@ -85,21 +64,20 @@ const GetCartById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.GetCartById = GetCartById;
-// EXPORT MODULE updateCart
+//Update Cart
 const updateCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // ESTABLISH CONNECTION WITH DATABASE
         const pool = yield mssql_1.default.connect(config_1.SQL_SERVER_CONFIG);
-        // EXTRACT id FROM REQUEST PARAMS
+        //destructure
         const { id } = req.params;
-        let item = yield (yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('GetCartById', { id })).recordset;
-        // CHECK ITEM IS IN CART
+        //strong type
+        let item = yield (yield DatabaseHelper_1.DatabaseHelper.exec('GetCartById', { id })).recordset;
+        //if cart is undefined
         if (!item.length) {
             return res.status(404).json({ message: "Cart item not found" });
         }
-        // EXTRACT USER INFO FROM REQUEST BODY
         const { userid, productid, quantity, price } = req.body;
-        yield (yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('UpdateCart', { userid, productid, quantity, price }));
+        yield (yield DatabaseHelper_1.DatabaseHelper.exec('UpdateCart', { userid, productid, quantity, price }));
         return res.status(201).json({ message: "Cart updated successfully" });
     }
     catch (error) {
@@ -107,20 +85,23 @@ const updateCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.updateCart = updateCart;
-// EXPORT MODULE deleteItemFromCart 
+//Delete Item from cart
 const deleteItemFromCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // ESTABLISH CONNECTION WITH DATABASE
-        const pool = yield mssql_1.default.connect(config_1.SQL_SERVER_CONFIG);
-        // EXTRACT CART ID FROM PARAMS
+        //destructure
         const { id } = req.params;
-        let item = yield (yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('GetCartById', { id })).recordset;
-        // CHECK IF CART IS EMPTY
-        if (!item.length) {
+        //strong type
+        let items = yield (yield DatabaseHelper_1.DatabaseHelper.exec('GetCartById', { id })).recordset;
+        //if cart is undefined
+        if (!items.length) {
             return res.status(404).json({ message: "Cart not found" });
         }
-        yield (yield DB_OPERATIONS_1.DB_OPERATIONS.EXECUTE('DeleteCartById', { id }));
-        return res.status(200).json({ message: "Cart deleted successfully" });
+        for (const item of items) {
+            const { productid } = item;
+            // Decrease the quantity of the product by one
+            yield (yield DatabaseHelper_1.DatabaseHelper.exec('DeleteProductFromCart', { cartid: id, productid }));
+        }
+        return res.status(200).json({ message: "Item deleted successfully" });
     }
     catch (error) {
         return res.status(500).json(error.message);

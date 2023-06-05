@@ -61,12 +61,10 @@ FROM Products
 
 --######## ORDERS #########
 CREATE TABLE Orders(
-	id INT IDENTITY(1, 1) PRIMARY KEY,
+	orderId VARCHAR(255) PRIMARY KEY,
 	orderDate VARCHAR(255), --TIME STAMP
-	userId VARCHAR(255),
 	totalAmount INT
 )
-
 /*************** END ***************/
 
 --####### ORDER ITEM ########
@@ -120,3 +118,4 @@ SELECT * FROM Cart
 
 
 DROP TABLE cart
+DROP TABLE products
